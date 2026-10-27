@@ -1,5 +1,6 @@
 // Import wizard: upload → (mapping, skipped for a known format) → review → done, plus the import history.
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router';
 import {
   useCommitImport,
   useDeleteImport,
@@ -29,6 +30,14 @@ export function ImportPage() {
   const setMapping = useSetMapping();
   const commit = useCommitImport();
   const cancel = useDeleteImport();
+  const { key } = useLocation();
+  const firstKey = useRef(key);
+
+  // Clicking "Importer" in the menu again starts a new import.
+  useEffect(() => {
+    if (key !== firstKey.current) restart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key]);
 
   function analyze(p: ImportPreview, account: string, mapping: Mapping) {
     setMapping.mutate(

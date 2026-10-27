@@ -62,6 +62,7 @@ apps/web/
                   → ReviewStep (near-duplicates skipped unless kept) → DoneStep; ImportHistory (undo)
                   transactions/: filters in the URL (?q=&account=&category=&uncategorized=true&from=&to=),
                   infinite list, inline CategorySelect → ApplyRuleDialog (this one / whole merchant)
+                  dashboard/: MonthSwitcher, Kpis, CategoryDonut, MonthlyBars (12 months stacked), TopMerchants
   Dockerfile      optional: built from the repo root, Caddy serves dist/ and proxies /api (used by moneta-api's
                   compose file and CI; the home server instead runs moneta.exe with MONETA_WEB_DIR=apps/web/dist)
 .github/workflows/ci.yml  npm ci, check, web build, Expo Android export, web Docker image build
@@ -97,4 +98,6 @@ apps/mobile/
 - ✅ W2: accounts page (banks, accounts with anchor balance), categories page (tree, edit) with rules card.
 - ✅ W3: import wizard (known formats skip the mapping step), history with undo.
 - ✅ W4: transactions page (search, filters, load more, inline recategorization with merchant rule).
-- Next: W5 (dashboard → MVP).
+- ✅ W5: dashboard. **Web MVP complete**, checked in a headless browser (sign up → accounts → 3 imports incl.
+  overlap review → transactions → dashboard, desktop and 390 px wide).
+- Next: API M7 (transfers, recurring) + W6.

@@ -17,24 +17,28 @@ export function TransactionRow({ txn, account, categories, onCategory }: Props) 
   return (
     <tr className={s.row}>
       <td className={s.date}>{formatDate(txn.date)}</td>
-      <td className={s.label}>
-        <strong>{txn.merchant}</strong>
-        <small>
-          {txn.label}
-          {account && ` · ${account.name}`}
-          {txn.note && ` · ${txn.note}`}
-        </small>
+      <td>
+        <div className={s.label}>
+          <strong>{txn.merchant}</strong>
+          <small>
+            {txn.label}
+            {account && ` · ${account.name}`}
+            {txn.note && ` · ${txn.note}`}
+          </small>
+        </div>
       </td>
-      <td className={s.category}>
-        <span className={s.dot} style={{ background: category?.color ?? 'var(--color-border)' }} />
-        <CategorySelect
-          categories={categories}
-          allowNone
-          value={txn.categoryId ?? ''}
-          onChange={(e) => onCategory(e.target.value)}
-          aria-label={t.transactions.category}
-        />
-        {txn.categorySource && <small className={s.source}>{t.transactions.sources[txn.categorySource]}</small>}
+      <td>
+        <div className={s.category}>
+          <span className={s.dot} style={{ background: category?.color ?? 'var(--color-border)' }} />
+          <CategorySelect
+            categories={categories}
+            allowNone
+            value={txn.categoryId ?? ''}
+            onChange={(e) => onCategory(e.target.value)}
+            aria-label={t.transactions.category}
+          />
+          {txn.categorySource && <small className={s.source}>{t.transactions.sources[txn.categorySource]}</small>}
+        </div>
       </td>
       <td className={s.right}>
         <Money cents={txn.amountCents} />

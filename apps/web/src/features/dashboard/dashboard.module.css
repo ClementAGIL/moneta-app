@@ -1,0 +1,112 @@
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+.kpi span {
+  color: var(--color-textMuted);
+  font-size: 14px;
+}
+.kpi strong {
+  font-size: 26px;
+  font-variant-numeric: tabular-nums;
+}
+.up {
+  color: var(--color-expense);
+}
+.down {
+  color: var(--color-income);
+}
+.callout {
+  display: block;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-warning) 14%, transparent);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+.wide {
+  margin-bottom: var(--space-lg);
+}
+.muted {
+  color: var(--color-textMuted);
+}
+.donut {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-lg);
+}
+.legend,
+.merchants {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+.legend li {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 3px 0;
+}
+.legend small {
+  color: var(--color-textMuted);
+  min-width: 36px;
+  text-align: right;
+}
+.legendName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.merchants li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2px var(--space-md);
+  padding: var(--space-xs) 0;
+}
+.merchantName small {
+  color: var(--color-textMuted);
+}
+.bar {
+  grid-column: 1 / -1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-brand);
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  .grid,
+  .donut {
+    grid-template-columns: 1fr;
+  }
+  .kpis {
+    grid-template-columns: 1fr 1fr;
+  }
+}

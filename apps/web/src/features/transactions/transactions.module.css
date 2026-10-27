@@ -77,20 +77,40 @@
   .table thead {
     display: none;
   }
+  .table,
+  .table tbody {
+    display: block;
+  }
   .row {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'label amount'
+      'category date';
+    gap: var(--space-xs) var(--space-md);
+    align-items: center;
     border-top: 1px solid var(--color-border);
     padding: var(--space-sm) var(--space-md);
   }
   .row td {
     border: none;
-    padding: 2px 0;
+    padding: 0;
+    min-width: 0;
+  }
+  .row td:nth-child(1) {
+    grid-area: date;
+    text-align: right;
+  }
+  .row td:nth-child(2) {
+    grid-area: label;
+  }
+  .row td:nth-child(3) {
+    grid-area: category;
+  }
+  .row td:nth-child(4) {
+    grid-area: amount;
   }
   .label small {
-    max-width: 60vw;
-  }
-  .category {
-    grid-column: 1;
+    max-width: 100%;
   }
 }

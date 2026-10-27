@@ -115,7 +115,7 @@ export const t = {
     byCategory: 'Dépenses par catégorie',
     monthly: 'Dépenses sur 12 mois',
     merchants: 'Principaux marchands',
-    uncategorized: (n: number) => `${n} opérations à catégoriser`,
+    uncategorized: (n: number) => (n === 1 ? `1 opération à catégoriser` : `${n} opérations à catégoriser`),
     categorizeNow: 'Catégoriser',
     emptyTitle: 'Bienvenue sur Moneta',
     emptyText: 'Ajoutez vos comptes et importez un premier relevé pour voir vos dépenses.',
