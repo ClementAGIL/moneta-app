@@ -75,6 +75,7 @@
     height: auto;
     flex-direction: row;
     justify-content: space-around;
+    overflow-x: auto;
     padding: var(--space-xs);
     border-right: none;
     border-top: 1px solid var(--color-border);
@@ -90,6 +91,8 @@
     gap: 2px;
     font-size: 11px;
     padding: var(--space-xs);
+    min-width: 60px;
+    flex: none;
   }
   .main {
     padding: var(--space-lg) var(--space-lg) 88px;

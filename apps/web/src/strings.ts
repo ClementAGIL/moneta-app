@@ -19,6 +19,7 @@ export const t = {
     transactions: 'Opérations',
     import: 'Importer',
     recurring: 'Abonnements',
+    budgets: 'Budgets',
     accounts: 'Comptes',
     categories: 'Catégories',
     signOut: 'Se déconnecter',
@@ -124,6 +125,16 @@ export const t = {
     emptyText: 'Ajoutez vos comptes et importez un premier relevé pour voir vos dépenses.',
     start: 'Commencer',
     noData: 'Aucune dépense ce mois-ci.',
+  },
+  budgets: {
+    title: 'Budgets',
+    amount: 'Montant mensuel (€)',
+    add: 'Ajouter un budget',
+    empty: 'Aucun budget',
+    emptyText: 'Fixez un montant mensuel pour les catégories à surveiller.',
+  },
+  insights: {
+    dismiss: 'Masquer ce conseil',
   },
   recurring: {
     title: 'Abonnements',

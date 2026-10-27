@@ -5,6 +5,7 @@ import { addMonths, currentMonth, useAccounts, useCategories, useSummary } from 
 import { MonthSwitcher } from '../../layout/MonthSwitcher';
 import { t } from '../../strings';
 import { Button, Card, EmptyState, ErrorText, PageHeader, Spinner } from '../../ui/kit';
+import { InsightsList } from '../insights/InsightsList';
 import { CategoryDonut } from './CategoryDonut';
 import { Kpis } from './Kpis';
 import { MonthlyBars } from './MonthlyBars';
@@ -42,6 +43,7 @@ export function DashboardPage() {
       {summary.data && (
         <>
           <Kpis summary={summary.data} />
+          <InsightsList limit={4} />
           {summary.data.uncategorizedCount > 0 && (
             <Link className={s.callout} to={`/transactions?uncategorized=true&from=${month}-01&to=${lastDay}`}>
               {t.dashboard.uncategorized(summary.data.uncategorizedCount)} → {t.dashboard.categorizeNow}

@@ -46,6 +46,7 @@ packages/shared/src/
                   bearer token and refreshes once on 401; ApiError, unwrap, checkHealth
   api/session.ts  signIn / signOut (web: refresh cookie; mobile: refresh token in the TokenStore)
   api/context.tsx ApiProvider / useApi
+  insights.ts     insightText (kind + params → French sentence), visibleInsights (no repeats across months)
   queries/        TanStack Query hooks per resource; keys.ts (+ transactionDerived invalidated after imports and
                   corrections)
 apps/web/
@@ -64,6 +65,8 @@ apps/web/
                   infinite list, inline CategorySelect → ApplyRuleDialog (this one / whole merchant)
                   recurring/: subscriptions / bills / income / inactive groups with monthly totals, price
                   changes, "subscription?" and "ignore" toggles
+                  budgets/: progress bars (80 % warn, > 100 % alert), inline amount edit, add/remove
+                  insights/: InsightsList (dashboard top 4, budgets page all), dismiss
                   dashboard/: MonthSwitcher, Kpis, CategoryDonut, MonthlyBars (12 months stacked), TopMerchants
   Dockerfile      optional: built from the repo root, Caddy serves dist/ and proxies /api (used by moneta-api's
                   compose file and CI; the home server instead runs moneta.exe with MONETA_WEB_DIR=apps/web/dist)
@@ -104,4 +107,5 @@ apps/mobile/
   overlap review → transactions → dashboard, desktop and 390 px wide).
 - ✅ W6: subscriptions page; transfers shown as "Virement interne" with an unpair button (pairing by hand is
   API-only, rarely needed). The import keeps the account picked in the form even when the format is known.
-- Next: API M8 (budgets, insights) + W7.
+- ✅ W7: budgets page and insights (dashboard + budgets page); mobile bottom bar scrolls with 7 entries.
+- Next: API M9 (classifier) + W8.

@@ -1246,6 +1246,146 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/budgets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Budgets with the month's spending (a category includes its subcategories) */
+        get: {
+            parameters: {
+                query?: {
+                    month?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Budgets */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Budget"][];
+                    };
+                };
+            };
+        };
+        /** Set a category's monthly budget (0 removes it) */
+        put: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        categoryId: string;
+                        amountCents: number;
+                    };
+                };
+            };
+            responses: {
+                /** @description Saved */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Advice for a month (default the current and previous month), most severe first */
+        get: {
+            parameters: {
+                query?: {
+                    month?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Insights */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Insight"][];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insights/{id}/dismiss": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: components["parameters"]["Id"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Hide an insight for good */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: components["parameters"]["Id"];
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Dismissed */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/stats/summary": {
         parameters: {
             query?: never;
@@ -1642,6 +1782,27 @@ export interface components {
             ignored: boolean;
             /** @description Not ignored and not overdue by more than half a period */
             active: boolean;
+        };
+        Budget: {
+            /** Format: uuid */
+            categoryId: string;
+            amountCents: number;
+            spentCents: number;
+            ratio: number;
+        };
+        Insight: {
+            /** Format: uuid */
+            id: string;
+            /** @enum {string} */
+            kind: "category_up" | "category_down" | "budget_warning" | "budget_exceeded" | "price_increase" | "new_subscription" | "duplicate_subscriptions" | "large_expense" | "bank_fees" | "savings_up" | "savings_down" | "forecast_negative";
+            /** @description YYYY-MM */
+            period: string;
+            /** @enum {string} */
+            severity: "info" | "good" | "warn" | "alert";
+            /** @description Ids and amounts only (categoryId, recurringId, transactionId, spentCents, averageCents, budgetCents, amountCents, previousCents, count, monthlyCents, rate, averageRate, savedCents, year, balanceCents, date) */
+            params: {
+                [key: string]: unknown;
+            };
         };
         Merchant: {
             name: string;

@@ -138,7 +138,7 @@ with EAS (`eas build -p android --profile preview`) or a local Gradle release bu
 | W4  | ✅ Transactions table, filters, search, recategorize + rule dialog      | M5        |
 | W5  | ✅ Dashboard → **MVP complete**                                         | M6        |
 | W6  | ✅ Subscriptions / recurring, transfer unpairing                        | M7        |
-| W7  | Budgets, insights feed                                                  | M8        |
+| W7  | ✅ Budgets, insights feed                                               | M8        |
 | W8  | Model status, "why this category"                                       | M9        |
 | W9  | Forecast chart                                                          | M10       |
 | W10 | Settings: profiles, rules, export, delete account                       | M11       |
