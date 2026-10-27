@@ -14,3 +14,4 @@ export * from './queries/stats';
 export * from './queries/recurring';
 export * from './queries/budgets';
 export * from './insights';
+export * from './queries/model';

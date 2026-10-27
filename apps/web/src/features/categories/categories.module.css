@@ -9,6 +9,10 @@
     grid-template-columns: 1fr;
   }
 }
+.side {
+  display: grid;
+  gap: var(--space-lg);
+}
 .tree,
 .rules {
   list-style: none;

@@ -29,3 +29,4 @@ export type Totals = S['Totals'];
 export type Recurring = S['Recurring'];
 export type Budget = S['Budget'];
 export type Insight = S['Insight'];
+export type ModelStatus = S['ModelStatus'];

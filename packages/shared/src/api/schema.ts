@@ -1386,6 +1386,121 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/model": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Categorization model status and holdout evaluation */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Status */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["ModelStatus"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/model/retrain": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Queue a retraining (also happens after imports and corrections) */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Queued */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/transactions/{id}/explain": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: components["parameters"]["Id"];
+            };
+            cookie?: never;
+        };
+        /** Why a transaction has its automatic category (rule pattern, keyword, or the model's strongest words) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: components["parameters"]["Id"];
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Explanation */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": {
+                            source: string | null;
+                            /** Format: uuid */
+                            categoryId: string | null;
+                            reasons: string[];
+                        };
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/stats/summary": {
         parameters: {
             query?: never;
@@ -1803,6 +1918,22 @@ export interface components {
             params: {
                 [key: string]: unknown;
             };
+        };
+        ModelStatus: {
+            /** @description Categorized transactions used for training */
+            samples: number;
+            minSamples: number;
+            /** Format: date-time */
+            trainedAt: string | null;
+            /** @description Holdout size (newest 20 %) */
+            tested: number;
+            accuracy: number;
+            /** @description Holdout transactions categorized by hand */
+            userTested: number;
+            modelOnUser: number;
+            rulesOnUser: number;
+            /** @description Used for transactions no rule matches */
+            active: boolean;
         };
         Merchant: {
             name: string;

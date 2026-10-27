@@ -126,6 +126,29 @@ export const t = {
     start: 'Commencer',
     noData: 'Aucune dépense ce mois-ci.',
   },
+  explain: {
+    title: (category: string) => `Pourquoi « ${category} » ?`,
+    none: 'Aucune règle ni le modèle ne reconnaissent cette opération.',
+    sources: {
+      rule: 'Une de vos règles correspond :',
+      builtin: 'Un mot-clé connu a été reconnu :',
+      model: 'Le modèle s’appuie surtout sur :',
+      user: 'Vous avez choisi cette catégorie vous-même.',
+      transfer: 'C’est un virement entre vos comptes.',
+    },
+    confidence: (p: string) => `Confiance : ${p}`,
+  },
+  model: {
+    title: 'Catégorisation automatique',
+    help: 'Après vos règles et les mots-clés connus, un modèle appris sur vos opérations classe le reste.',
+    active: 'Modèle actif',
+    inactive: 'Modèle pas encore actif',
+    progress: (n: number, min: number) => `${n} opérations catégorisées sur ${min} nécessaires.`,
+    accuracy: (p: string, n: number) => `Précision : ${p} sur les ${n} opérations les plus récentes.`,
+    versusRules: (model: string, rules: string) =>
+      `Sur les opérations corrigées à la main : modèle ${model}, règles ${rules}.`,
+    retrain: 'Réentraîner',
+  },
   budgets: {
     title: 'Budgets',
     amount: 'Montant mensuel (€)',

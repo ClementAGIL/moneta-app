@@ -11,9 +11,10 @@ interface Props {
   categories: Category[];
   onCategory(categoryId: string): void;
   onUnpair(): void;
+  onExplain(): void;
 }
 
-export function TransactionRow({ txn, account, categories, onCategory, onUnpair }: Props) {
+export function TransactionRow({ txn, account, categories, onCategory, onUnpair, onExplain }: Props) {
   const category = categories.find((c) => c.id === txn.categoryId);
   return (
     <tr className={s.row}>
@@ -46,7 +47,11 @@ export function TransactionRow({ txn, account, categories, onCategory, onUnpair 
               onChange={(e) => onCategory(e.target.value)}
               aria-label={t.transactions.category}
             />
-            {txn.categorySource && <small className={s.source}>{t.transactions.sources[txn.categorySource]}</small>}
+            {txn.categorySource && (
+              <button type="button" className={s.source} onClick={onExplain}>
+                {t.transactions.sources[txn.categorySource]} ⓘ
+              </button>
+            )}
           </div>
         )}
       </td>

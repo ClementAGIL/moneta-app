@@ -13,6 +13,7 @@ import {
 import { t } from '../../strings';
 import { Button, EmptyState, ErrorText, PageHeader, Spinner } from '../../ui/kit';
 import { ApplyRuleDialog } from './ApplyRuleDialog';
+import { ExplainDialog } from './ExplainDialog';
 import { Filters } from './Filters';
 import { TransactionRow } from './TransactionRow';
 import s from './transactions.module.css';
@@ -28,6 +29,7 @@ export function TransactionsPage() {
   const edit = useEditTransaction();
   const unpair = useUnpairTransfer();
   const [pending, setPending] = useState<{ txn: Transaction; categoryId: string } | null>(null);
+  const [explaining, setExplaining] = useState<Transaction | null>(null);
 
   function onCategory(txn: Transaction, categoryId: string) {
     if (categoryId) setPending({ txn, categoryId });
@@ -75,6 +77,7 @@ export function TransactionsPage() {
                 categories={categories.data ?? []}
                 onCategory={(id) => onCategory(txn, id)}
                 onUnpair={() => unpair.mutate(txn.id)}
+                onExplain={() => setExplaining(txn)}
               />
             ))}
           </tbody>
@@ -86,6 +89,9 @@ export function TransactionsPage() {
             {t.common.loadMore}
           </Button>
         </div>
+      )}
+      {explaining && (
+        <ExplainDialog txn={explaining} categories={categories.data ?? []} onClose={() => setExplaining(null)} />
       )}
       {pending && (
         <ApplyRuleDialog

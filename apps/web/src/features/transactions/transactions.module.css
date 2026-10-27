@@ -67,6 +67,11 @@
 .source {
   color: var(--color-textMuted);
   font-size: 11px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
 }
 .right {
   text-align: right !important;

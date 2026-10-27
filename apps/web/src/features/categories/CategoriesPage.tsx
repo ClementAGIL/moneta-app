@@ -5,6 +5,7 @@ import { t } from '../../strings';
 import { Button, Card, ErrorText, PageHeader, Spinner } from '../../ui/kit';
 import { CategoryBadge } from '../../ui/Money';
 import { CategoryModal } from './CategoryModal';
+import { ModelCard } from './ModelCard';
 import { RulesCard } from './RulesCard';
 import s from './categories.module.css';
 
@@ -35,7 +36,10 @@ export function CategoriesPage() {
             ))}
           </ul>
         </Card>
-        <RulesCard categories={categories.data} />
+        <div className={s.side}>
+          <RulesCard categories={categories.data} />
+          <ModelCard />
+        </div>
       </div>
       {editing && (
         <CategoryModal category={editing.category} categories={categories.data} onClose={() => setEditing(null)} />

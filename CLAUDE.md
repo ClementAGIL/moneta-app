@@ -62,7 +62,9 @@ apps/web/
                   import/: ImportPage (step state) → UploadStep → MappingStep (roles.ts: column role ↔ Mapping)
                   → ReviewStep (near-duplicates skipped unless kept) → DoneStep; ImportHistory (undo)
                   transactions/: filters in the URL (?q=&account=&category=&uncategorized=true&from=&to=),
-                  infinite list, inline CategorySelect → ApplyRuleDialog (this one / whole merchant)
+                  infinite list, inline CategorySelect → ApplyRuleDialog (this one / whole merchant),
+                  source badge → ExplainDialog (rule, keyword or model words + confidence)
+                  categories/: tree, RulesCard, ModelCard (activation progress, holdout accuracy, retrain)
                   recurring/: subscriptions / bills / income / inactive groups with monthly totals, price
                   changes, "subscription?" and "ignore" toggles
                   budgets/: progress bars (80 % warn, > 100 % alert), inline amount edit, add/remove
@@ -108,4 +110,5 @@ apps/mobile/
 - ✅ W6: subscriptions page; transfers shown as "Virement interne" with an unpair button (pairing by hand is
   API-only, rarely needed). The import keeps the account picked in the form even when the format is known.
 - ✅ W7: budgets page and insights (dashboard + budgets page); mobile bottom bar scrolls with 7 entries.
-- Next: API M9 (classifier) + W8.
+- ✅ W8: model status card, "why this category" dialog.
+- Next: API M10 (forecast) + W9.
