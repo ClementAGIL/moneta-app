@@ -43,7 +43,9 @@ packages/shared/src/
 apps/web/
   src/theme.ts    tokens → CSS variables (--color-*, --space-*, --radius-*), injected before render
   src/App.tsx     placeholder home (API status)
-  Dockerfile      built from the repo root; Caddy serves dist/ and proxies /api to the api container
+  Dockerfile      optional: built from the repo root, Caddy serves dist/ and proxies /api (used by moneta-api's
+                  compose file and CI; the home server instead runs moneta.exe with MONETA_WEB_DIR=apps/web/dist)
+.github/workflows/ci.yml  npm ci, check, web build, Expo Android export, web Docker image build
 apps/mobile/
   src/app/        Expo Router routes only (_layout: themed stack; index: placeholder home)
   src/theme.ts    useTheme(): shared tokens for the current color scheme
@@ -69,6 +71,6 @@ apps/mobile/
 ## Status
 
 - ✅ W0 / A0 scaffold: monorepo, shared tokens/format/health, web placeholder themed via CSS variables, Expo app
-  themed via `useTheme()`, web Dockerfile + Caddyfile. `npm run check`, web build, expo-doctor and an Android
-  export bundle pass.
+  themed via `useTheme()`, optional web Dockerfile + Caddyfile, CI. `npm run check`, web build, expo-doctor and an
+  Android export bundle pass; the web build is served by `moneta.exe` (checked).
 - Next: W1 (UI kit, routing, generated API client, auth pages) once the API has M2.

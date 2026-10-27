@@ -16,7 +16,8 @@ Decisions taken with the user (2026-10-27):
   formatting and insight texts are**.
 - UI in **French** first; all strings live in one place per app so English can follow.
 - MVP is web-only (import wizard, transactions, dashboard). Mobile starts once the MVP API (M6) exists.
-- The home server serves the web app and the API on one origin (Caddy, `apps/web/Caddyfile`).
+- The home server serves the web app and the API on one origin: `moneta.exe` serves `apps/web/dist` itself
+  (`MONETA_WEB_DIR`), no Docker. The Caddy image (`apps/web/Dockerfile`) stays as an optional, CI-built alternative.
 
 Environment: Node 22.14, JDK 17, Android SDK. Expo SDK 58 (React Native 0.88, React 19.3.0).
 

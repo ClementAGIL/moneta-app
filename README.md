@@ -42,5 +42,8 @@ npm run build -w @moneta/web   # production web build
 
 ## Deploy (home server)
 
-The web app is built into a Caddy image (`apps/web/Dockerfile`, built from this repo's root) and started by the
-`docker-compose.yml` in `moneta-api`, which serves the app and the API on one origin.
+Build the web app (`npm run build -w @moneta/web`) and start the API with `MONETA_WEB_DIR` pointing at
+`apps/web/dist`: the API serves the app on `/` and itself on `/api`, one process and one origin.
+
+Optional: `apps/web/Dockerfile` (built from this repo's root) packages the web app in a Caddy image, used by the
+`docker-compose.yml` in `moneta-api`.

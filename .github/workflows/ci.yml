@@ -1,0 +1,30 @@
+# On every push / PR: type-check + format, web build, Android JS bundle, and the optional web Docker image.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm run build -w @moneta/web
+      - name: Android bundle
+        working-directory: apps/mobile
+        run: npx expo export --platform android --output-dir /tmp/expo-export
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build web image
+        run: docker build -f apps/web/Dockerfile -t moneta-web .
