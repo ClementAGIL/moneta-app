@@ -26,10 +26,7 @@ export function UploadStep({ onUploaded, busy }: Props) {
 
   function send(file: File | undefined) {
     if (!file) return;
-    upload.mutate(
-      { file, name: file.name },
-      { onSuccess: (preview) => onUploaded(preview, preview.accountId ?? accountId) },
-    );
+    upload.mutate({ file, name: file.name }, { onSuccess: (preview) => onUploaded(preview, accountId) });
   }
 
   function onDrop(e: DragEvent) {

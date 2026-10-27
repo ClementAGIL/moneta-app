@@ -10,9 +10,10 @@ interface Props {
   account: Account | undefined;
   categories: Category[];
   onCategory(categoryId: string): void;
+  onUnpair(): void;
 }
 
-export function TransactionRow({ txn, account, categories, onCategory }: Props) {
+export function TransactionRow({ txn, account, categories, onCategory, onUnpair }: Props) {
   const category = categories.find((c) => c.id === txn.categoryId);
   return (
     <tr className={s.row}>
@@ -28,17 +29,26 @@ export function TransactionRow({ txn, account, categories, onCategory }: Props) 
         </div>
       </td>
       <td>
-        <div className={s.category}>
-          <span className={s.dot} style={{ background: category?.color ?? 'var(--color-border)' }} />
-          <CategorySelect
-            categories={categories}
-            allowNone
-            value={txn.categoryId ?? ''}
-            onChange={(e) => onCategory(e.target.value)}
-            aria-label={t.transactions.category}
-          />
-          {txn.categorySource && <small className={s.source}>{t.transactions.sources[txn.categorySource]}</small>}
-        </div>
+        {txn.transferId ? (
+          <div className={s.category}>
+            <span className={s.transfer}>{t.transactions.transfer}</span>
+            <button type="button" className={s.unpair} onClick={onUnpair} title={t.transactions.unpair}>
+              ✕
+            </button>
+          </div>
+        ) : (
+          <div className={s.category}>
+            <span className={s.dot} style={{ background: category?.color ?? 'var(--color-border)' }} />
+            <CategorySelect
+              categories={categories}
+              allowNone
+              value={txn.categoryId ?? ''}
+              onChange={(e) => onCategory(e.target.value)}
+              aria-label={t.transactions.category}
+            />
+            {txn.categorySource && <small className={s.source}>{t.transactions.sources[txn.categorySource]}</small>}
+          </div>
+        )}
       </td>
       <td className={s.right}>
         <Money cents={txn.amountCents} />

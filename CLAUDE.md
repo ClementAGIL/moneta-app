@@ -62,6 +62,8 @@ apps/web/
                   → ReviewStep (near-duplicates skipped unless kept) → DoneStep; ImportHistory (undo)
                   transactions/: filters in the URL (?q=&account=&category=&uncategorized=true&from=&to=),
                   infinite list, inline CategorySelect → ApplyRuleDialog (this one / whole merchant)
+                  recurring/: subscriptions / bills / income / inactive groups with monthly totals, price
+                  changes, "subscription?" and "ignore" toggles
                   dashboard/: MonthSwitcher, Kpis, CategoryDonut, MonthlyBars (12 months stacked), TopMerchants
   Dockerfile      optional: built from the repo root, Caddy serves dist/ and proxies /api (used by moneta-api's
                   compose file and CI; the home server instead runs moneta.exe with MONETA_WEB_DIR=apps/web/dist)
@@ -100,4 +102,6 @@ apps/mobile/
 - ✅ W4: transactions page (search, filters, load more, inline recategorization with merchant rule).
 - ✅ W5: dashboard. **Web MVP complete**, checked in a headless browser (sign up → accounts → 3 imports incl.
   overlap review → transactions → dashboard, desktop and 390 px wide).
-- Next: API M7 (transfers, recurring) + W6.
+- ✅ W6: subscriptions page; transfers shown as "Virement interne" with an unpair button (pairing by hand is
+  API-only, rarely needed). The import keeps the account picked in the form even when the format is known.
+- Next: API M8 (budgets, insights) + W7.

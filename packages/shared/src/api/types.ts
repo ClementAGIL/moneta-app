@@ -26,3 +26,4 @@ export type StatsSummary = S['StatsSummary'];
 export type MonthAmount = S['MonthAmount'];
 export type Merchant = S['Merchant'];
 export type Totals = S['Totals'];
+export type Recurring = S['Recurring'];

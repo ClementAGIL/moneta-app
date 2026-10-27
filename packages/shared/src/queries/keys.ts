@@ -10,6 +10,7 @@ export const keys = {
   transactions: ['transactions'] as const,
   transactionList: (filter: object) => ['transactions', 'list', filter] as const,
   rules: ['rules'] as const,
+  recurring: ['recurring'] as const,
   stats: ['stats'] as const,
   summary: (month: string) => ['stats', 'summary', month] as const,
   series: (from: string, to: string) => ['stats', 'categories', from, to] as const,
@@ -17,4 +18,4 @@ export const keys = {
 };
 
 /** Everything derived from transactions: refetch after an import, a correction or a rule change. */
-export const transactionDerived = [keys.transactions, keys.stats, keys.accounts] as const;
+export const transactionDerived = [keys.transactions, keys.stats, keys.accounts, keys.recurring] as const;

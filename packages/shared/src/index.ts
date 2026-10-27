@@ -11,3 +11,4 @@ export * from './queries/resources';
 export * from './queries/imports';
 export * from './queries/transactions';
 export * from './queries/stats';
+export * from './queries/recurring';

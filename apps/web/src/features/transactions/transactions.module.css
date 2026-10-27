@@ -54,6 +54,16 @@
   border-radius: 50%;
   flex: none;
 }
+.transfer {
+  color: var(--color-textMuted);
+  font-style: italic;
+}
+.unpair {
+  border: none;
+  background: none;
+  color: var(--color-textMuted);
+  cursor: pointer;
+}
 .source {
   color: var(--color-textMuted);
   font-size: 11px;

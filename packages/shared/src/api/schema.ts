@@ -1086,6 +1086,166 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/recurring": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Recurring payments and income (active first, then by monthly cost) */
+        get: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Series */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Recurring"][];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/recurring/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: components["parameters"]["Id"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /** Ignore a series, or say whether it is a subscription */
+        patch: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: components["parameters"]["Id"];
+                };
+                cookie?: never;
+            };
+            requestBody: {
+                content: {
+                    "application/json": {
+                        ignored?: boolean;
+                        subscription?: boolean;
+                    };
+                };
+            };
+            responses: {
+                /** @description Saved */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        trace?: never;
+    };
+    "/transactions/{id}/transfer/{other}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: components["parameters"]["Id"];
+                other: string;
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Mark two opposite movements in two accounts as an internal transfer */
+        post: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: components["parameters"]["Id"];
+                    other: string;
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Paired */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+                422: components["responses"]["Error"];
+            };
+        };
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/transactions/{id}/transfer": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: components["parameters"]["Id"];
+            };
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** Unpair a transfer (both sides are categorized again) */
+        delete: {
+            parameters: {
+                query?: never;
+                header?: never;
+                path: {
+                    id: components["parameters"]["Id"];
+                };
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Unpaired */
+                204: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content?: never;
+                };
+            };
+        };
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/stats/summary": {
         parameters: {
             query?: never;
@@ -1454,6 +1614,34 @@ export interface components {
             categoryId: string | null;
             spendingCents: number;
             incomeCents: number;
+        };
+        Recurring: {
+            /** Format: uuid */
+            id: string;
+            name: string;
+            /** @enum {string} */
+            direction: "in" | "out";
+            /** @enum {string} */
+            cadence: "weekly" | "monthly" | "quarterly" | "yearly";
+            /** @description Latest amount */
+            amountCents: number;
+            /** @description Monthly equivalent */
+            monthlyCents: number;
+            /** @description Amount before the latest price change */
+            previousAmountCents: number | null;
+            /** Format: date */
+            priceChangedOn: string | null;
+            occurrences: number;
+            /** Format: date */
+            lastDate: string;
+            /** Format: date */
+            nextDate: string;
+            /** Format: uuid */
+            categoryId: string | null;
+            subscription: boolean;
+            ignored: boolean;
+            /** @description Not ignored and not overdue by more than half a period */
+            active: boolean;
         };
         Merchant: {
             name: string;

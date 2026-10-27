@@ -8,6 +8,7 @@ const LINKS = [
   { to: '/', label: t.nav.dashboard, icon: '◔' },
   { to: '/transactions', label: t.nav.transactions, icon: '≡' },
   { to: '/import', label: t.nav.import, icon: '⇪' },
+  { to: '/recurring', label: t.nav.recurring, icon: '↻' },
   { to: '/accounts', label: t.nav.accounts, icon: '▣' },
   { to: '/categories', label: t.nav.categories, icon: '◉' },
 ];

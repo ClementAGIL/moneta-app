@@ -5,6 +5,7 @@ import {
   useAccounts,
   useCategories,
   useEditTransaction,
+  useUnpairTransfer,
   useTransactions,
   type Transaction,
   type TransactionFilter,
@@ -25,6 +26,7 @@ export function TransactionsPage() {
   const accounts = useAccounts();
   const categories = useCategories();
   const edit = useEditTransaction();
+  const unpair = useUnpairTransfer();
   const [pending, setPending] = useState<{ txn: Transaction; categoryId: string } | null>(null);
 
   function onCategory(txn: Transaction, categoryId: string) {
@@ -72,6 +74,7 @@ export function TransactionsPage() {
                 account={accounts.data?.find((a) => a.id === txn.accountId)}
                 categories={categories.data ?? []}
                 onCategory={(id) => onCategory(txn, id)}
+                onUnpair={() => unpair.mutate(txn.id)}
               />
             ))}
           </tbody>
