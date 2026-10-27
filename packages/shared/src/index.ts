@@ -1,6 +1,7 @@
 // Public surface of @moneta/shared: everything web and mobile both use. No DOM or React Native imports here.
 export * from './tokens';
 export * from './format';
+export * from './money';
 export * from './api/client';
 export * from './api/context';
 export * from './api/session';

@@ -133,7 +133,7 @@ with EAS (`eas build -p android --profile preview`) or a local Gradle release bu
 | --- | ----------------------------------------------------------------------- | --------- |
 | W0  | ✅ Monorepo, Vite app, shared tokens → CSS variables, API health        | M0        |
 | W1  | ✅ UI kit, routing, app shell, generated API types + client, auth pages | M2        |
-| W2  | Onboarding (banks, accounts), categories list                           | M3        |
+| W2  | ✅ Onboarding (banks, accounts), categories list                           | M3        |
 | W3  | Import wizard (upload, mapping grid, review, commit, history/undo)      | M4        |
 | W4  | Transactions table, filters, search, recategorize + rule dialog         | M5        |
 | W5  | Dashboard → **MVP complete**                                            | M6        |

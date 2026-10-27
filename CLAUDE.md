@@ -38,6 +38,7 @@ No unit tests by default (user's rule).
 ```
 packages/shared/src/
   tokens.ts       design tokens (palettes light/dark, spacing, radius, font sizes)
+  money.ts        parseAmountInput ("12,50" → cents), centsToInput
   format.ts       fr-FR formatting: money (cents), dates, months (formatMonth, addMonths, currentMonth), percent
   api/schema.ts   GENERATED from ../moneta-api/docs/openapi.yaml (npm run api:types -w @moneta/shared)
   api/types.ts    friendly aliases (Account, Transaction, ImportPreview…)
@@ -54,7 +55,7 @@ apps/web/
   src/App.tsx     loading / AuthPage / router; src/routes.tsx route table
   src/strings.ts  French UI strings, grouped by screen
   src/ui/         kit.tsx (Button, Field, Input, Select, Card, PageHeader, EmptyState, Spinner, ErrorText),
-                  Modal.tsx (native dialog), Money.tsx (Money, CategoryBadge), ui.module.css
+                  Modal.tsx (native dialog), Money.tsx (Money, CategoryBadge), CategorySelect.tsx, ui.module.css
   src/layout/     AppShell (sidebar ≥ 720 px, bottom bar below)
   src/features/   one folder per screen: auth, dashboard, transactions, import, accounts, categories
   Dockerfile      optional: built from the repo root, Caddy serves dist/ and proxies /api (used by moneta-api's
@@ -89,4 +90,5 @@ apps/mobile/
   Android export bundle pass; the web build is served by `moneta.exe` (checked).
 - ✅ W1: shared API client + hooks (types generated from the OpenAPI file), session, routing, UI kit, app shell,
   login/register.
-- Next: W2 (accounts, categories).
+- ✅ W2: accounts page (banks, accounts with anchor balance), categories page (tree, edit) with rules card.
+- Next: W3 (import wizard).

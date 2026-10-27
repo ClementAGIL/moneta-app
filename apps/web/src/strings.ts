@@ -131,6 +131,7 @@ export const t = {
     color: 'Couleur',
     kind: 'Type',
     kinds: { expense: 'Dépense', income: 'Revenu', transfer: 'Virement' },
+    excluded: 'Exclure des statistiques',
     deleteConfirm: 'Supprimer cette catégorie ? Ses opérations deviendront non catégorisées.',
     rules: 'Règles',
     rulesHelp: 'Les règles classent automatiquement les opérations dont le libellé correspond.',

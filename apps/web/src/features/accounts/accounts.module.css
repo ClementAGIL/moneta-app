@@ -1,0 +1,66 @@
+.banks {
+  display: grid;
+  gap: var(--space-lg);
+}
+.bankHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+.bankHeader h2 {
+  margin: 0;
+  font-size: 18px;
+}
+.actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+.accounts {
+  list-style: none;
+  margin: var(--space-md) 0 0;
+  padding: 0;
+}
+.account {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.account span {
+  display: flex;
+  flex-direction: column;
+}
+.account small {
+  color: var(--color-textMuted);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+.help {
+  color: var(--color-textMuted);
+}
+.modalActions {
+  display: flex;
+  gap: var(--space-sm);
+}
+.spacer {
+  flex: 1;
+}
