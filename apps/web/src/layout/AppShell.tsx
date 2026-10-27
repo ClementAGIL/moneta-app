@@ -12,6 +12,7 @@ const LINKS = [
   { to: '/budgets', label: t.nav.budgets, icon: '◎' },
   { to: '/accounts', label: t.nav.accounts, icon: '▣' },
   { to: '/categories', label: t.nav.categories, icon: '◉' },
+  { to: '/settings', label: t.nav.settings, icon: '⚙' },
 ];
 
 export function AppShell() {

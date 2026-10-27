@@ -6,7 +6,8 @@ and advice to save more.
 
 The backend is [moneta-api](../moneta-api) (Go + PostgreSQL).
 
-> Status: web MVP working (sign up, accounts, import wizard, transactions, dashboard); mobile app in progress. See [docs/PLAN.md](docs/PLAN.md) for the screens and roadmap.
+> Status: web app complete (import wizard, transactions, dashboard, subscriptions, budgets and advice, forecast,
+> settings); mobile app in progress. See [docs/PLAN.md](docs/PLAN.md) for the screens and roadmap.
 
 ## What's inside
 

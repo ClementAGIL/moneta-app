@@ -141,7 +141,7 @@ with EAS (`eas build -p android --profile preview`) or a local Gradle release bu
 | W7  | ✅ Budgets, insights feed                                               | M8        |
 | W8  | ✅ Model status, "why this category"                                    | M9        |
 | W9  | ✅ Forecast chart                                                       | M10       |
-| W10 | Settings: profiles, rules, export, delete account                       | M11       |
+| W10 | ✅ Settings: profiles, rules, export, delete account                    | M11       |
 
 | #   | Mobile                                                        | Needs API |
 | --- | ------------------------------------------------------------- | --------- |
