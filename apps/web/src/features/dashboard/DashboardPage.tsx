@@ -7,6 +7,7 @@ import { t } from '../../strings';
 import { Button, Card, EmptyState, ErrorText, PageHeader, Spinner } from '../../ui/kit';
 import { InsightsList } from '../insights/InsightsList';
 import { CategoryDonut } from './CategoryDonut';
+import { ForecastCard } from './ForecastCard';
 import { Kpis } from './Kpis';
 import { MonthlyBars } from './MonthlyBars';
 import { TopMerchants } from './TopMerchants';
@@ -53,9 +54,12 @@ export function DashboardPage() {
             <Card title={t.dashboard.byCategory}>
               <CategoryDonut items={summary.data.byCategory} categories={cats} />
             </Card>
-            <Card title={t.dashboard.merchants}>
-              <TopMerchants month={month} />
-            </Card>
+            <div className={s.column}>
+              {month === currentMonth() && <ForecastCard />}
+              <Card title={t.dashboard.merchants}>
+                <TopMerchants month={month} />
+              </Card>
+            </div>
           </div>
         </>
       )}

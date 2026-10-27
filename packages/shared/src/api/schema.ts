@@ -1501,6 +1501,45 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/forecast": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** End-of-month balance forecast (bootstrap of the last 90 days + recurring items still due) */
+        get: {
+            parameters: {
+                query?: {
+                    /** @description Default all current and card accounts */
+                    account?: string;
+                };
+                header?: never;
+                path?: never;
+                cookie?: never;
+            };
+            requestBody?: never;
+            responses: {
+                /** @description Forecast */
+                200: {
+                    headers: {
+                        [name: string]: unknown;
+                    };
+                    content: {
+                        "application/json": components["schemas"]["Forecast"];
+                    };
+                };
+            };
+        };
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/stats/summary": {
         parameters: {
             query?: never;
@@ -1934,6 +1973,28 @@ export interface components {
             rulesOnUser: number;
             /** @description Used for transactions no rule matches */
             active: boolean;
+        };
+        ForecastDay: {
+            /** Format: date */
+            date: string;
+            p25Cents: number;
+            p50Cents: number;
+            p75Cents: number;
+        };
+        Forecast: {
+            /** Format: uuid */
+            accountId: string | null;
+            /** Format: date */
+            today: string;
+            balanceCents: number;
+            expected: {
+                name: string;
+                /** Format: date */
+                date: string;
+                amountCents: number;
+            }[];
+            days: components["schemas"]["ForecastDay"][];
+            endOfMonth: components["schemas"]["ForecastDay"];
         };
         Merchant: {
             name: string;

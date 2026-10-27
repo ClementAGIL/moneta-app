@@ -43,6 +43,28 @@
   gap: var(--space-lg);
   margin-bottom: var(--space-lg);
 }
+.column {
+  display: grid;
+  gap: var(--space-lg);
+  align-content: start;
+}
+.forecastHead small {
+  color: var(--color-textMuted);
+}
+.expected {
+  list-style: none;
+  margin: var(--space-sm) 0 0;
+  padding: 0;
+  font-size: 14px;
+}
+.expected li {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 0;
+}
+.expected small {
+  color: var(--color-textMuted);
+}
 .wide {
   margin-bottom: var(--space-lg);
 }

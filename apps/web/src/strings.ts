@@ -126,6 +126,10 @@ export const t = {
     start: 'Commencer',
     noData: 'Aucune dépense ce mois-ci.',
   },
+  forecast: {
+    title: 'Fin du mois',
+    end: 'Solde estimé en fin de mois :',
+  },
   explain: {
     title: (category: string) => `Pourquoi « ${category} » ?`,
     none: 'Aucune règle ni le modèle ne reconnaissent cette opération.',

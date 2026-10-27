@@ -28,3 +28,12 @@ export function useTopMerchants(from: string, to: string, limit = 8) {
     queryFn: async () => unwrap(await api.client.GET('/stats/merchants', { params: { query: { from, to, limit } } })),
   });
 }
+
+/** End-of-month balance forecast for one account, or all current and card accounts. */
+export function useForecast(account?: string) {
+  const api = useApi();
+  return useQuery({
+    queryKey: ['stats', 'forecast', account ?? 'all'],
+    queryFn: async () => unwrap(await api.client.GET('/forecast', { params: { query: { account } } })),
+  });
+}

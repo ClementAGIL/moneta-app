@@ -69,7 +69,8 @@ apps/web/
                   changes, "subscription?" and "ignore" toggles
                   budgets/: progress bars (80 % warn, > 100 % alert), inline amount edit, add/remove
                   insights/: InsightsList (dashboard top 4, budgets page all), dismiss
-                  dashboard/: MonthSwitcher, Kpis, CategoryDonut, MonthlyBars (12 months stacked), TopMerchants
+                  dashboard/: MonthSwitcher, Kpis, CategoryDonut, MonthlyBars (12 months stacked), TopMerchants,
+                  ForecastCard (current month: median line in the p25–p75 band, items still expected)
   Dockerfile      optional: built from the repo root, Caddy serves dist/ and proxies /api (used by moneta-api's
                   compose file and CI; the home server instead runs moneta.exe with MONETA_WEB_DIR=apps/web/dist)
 .github/workflows/ci.yml  npm ci, check, web build, Expo Android export, web Docker image build
@@ -111,4 +112,5 @@ apps/mobile/
   API-only, rarely needed). The import keeps the account picked in the form even when the format is known.
 - ✅ W7: budgets page and insights (dashboard + budgets page); mobile bottom bar scrolls with 7 entries.
 - ✅ W8: model status card, "why this category" dialog.
-- Next: API M10 (forecast) + W9.
+- ✅ W9: forecast card on the dashboard.
+- Next: API M11 (export, delete account, hardening) + W10 (settings).
