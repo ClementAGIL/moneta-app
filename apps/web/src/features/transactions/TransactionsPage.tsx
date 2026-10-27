@@ -44,6 +44,7 @@ export function TransactionsPage() {
 
   const items = list.data?.pages.flatMap((p) => p.items) ?? [];
   const byId = new Map((categories.data ?? []).map((c) => [c.id, c]));
+  const accountById = new Map((accounts.data ?? []).map((a) => [a.id, a]));
   return (
     <>
       <PageHeader title={t.transactions.title} />
@@ -73,7 +74,7 @@ export function TransactionsPage() {
               <TransactionRow
                 key={txn.id}
                 txn={txn}
-                account={accounts.data?.find((a) => a.id === txn.accountId)}
+                account={accountById.get(txn.accountId)}
                 categories={categories.data ?? []}
                 onCategory={(id) => onCategory(txn, id)}
                 onUnpair={() => unpair.mutate(txn.id)}

@@ -53,7 +53,8 @@ apps/web/
   src/theme.ts    tokens → CSS variables (--color-*, --space-*, --radius-*), injected before render
   src/api.ts      web TokenStore (access token in memory) + api instance + onSessionEnd
   src/auth/       SessionProvider (refresh on load, signIn/signOut)
-  src/App.tsx     loading / AuthPage / router; src/routes.tsx route table
+  src/App.tsx     loading / AuthPage / router; src/routes.tsx route table, one lazy chunk per page (recharts
+                  only ships with the dashboard)
   src/strings.ts  French UI strings, grouped by screen
   src/ui/         kit.tsx (Button, Field, Input, Select, Card, PageHeader, EmptyState, Spinner, ErrorText),
                   Modal.tsx (native dialog), Money.tsx (Money, CategoryBadge), CategorySelect.tsx, ui.module.css

@@ -22,6 +22,7 @@ export function Transactions() {
   const edit = useEditTransaction();
   const [picking, setPicking] = useState<Transaction | null>(null);
   const items = list.data?.pages.flatMap((p) => p.items) ?? [];
+  const byId = useMemo(() => new Map((categories.data ?? []).map((c) => [c.id, c])), [categories.data]);
 
   function choose(txn: Transaction, categoryId: string) {
     setPicking(null);
@@ -52,8 +53,8 @@ export function Transactions() {
             <Row
               txn={item}
               showDate={index === 0 || items[index - 1]?.date !== item.date}
-              color={categories.data?.find((c) => c.id === item.categoryId)?.color}
-              category={categories.data?.find((c) => c.id === item.categoryId)?.name}
+              color={item.categoryId ? byId.get(item.categoryId)?.color : undefined}
+              category={item.categoryId ? byId.get(item.categoryId)?.name : undefined}
               onPress={() => !item.transferId && setPicking(item)}
             />
           )}

@@ -1,5 +1,5 @@
 // Transaction filters: search (debounced), account, category or uncategorized, date range.
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { Account, Category, TransactionFilter } from '@moneta/shared';
 import { t } from '../../strings';
 import { Input, Select } from '../../ui/kit';
@@ -17,12 +17,19 @@ interface Props {
 
 export function Filters({ filter, accounts, categories, onChange }: Props) {
   const [q, setQ] = useState(filter.q ?? '');
+  // The latest filter and callback, read when the debounce fires: depending on them would restart the timer on
+  // every parent render and could apply a stale filter.
+  const latest = useRef({ filter, onChange });
+  latest.current = { filter, onChange };
 
   useEffect(() => {
-    if ((filter.q ?? '') === q) return;
-    const timer = setTimeout(() => onChange({ ...filter, q: q || undefined }), SEARCH_DELAY_MS);
+    if ((latest.current.filter.q ?? '') === q) return;
+    const timer = setTimeout(() => {
+      const { filter: current, onChange: change } = latest.current;
+      change({ ...current, q: q || undefined });
+    }, SEARCH_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [q, filter, onChange]);
+  }, [q]);
 
   function onCategory(value: string) {
     onChange({
