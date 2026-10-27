@@ -76,9 +76,17 @@ apps/web/
                   compose file and CI; the home server instead runs moneta.exe with MONETA_WEB_DIR=apps/web/dist)
 .github/workflows/ci.yml  npm ci, check, web build, Expo Android export, web Docker image build
 apps/mobile/
-  src/app/        Expo Router routes only (_layout: themed stack; index: placeholder home)
-  src/theme.ts    useTheme(): shared tokens for the current color scheme
-  src/config.ts   API_URL from EXPO_PUBLIC_API_URL
+  src/app/        Expo Router routes only: _layout (QueryClient, SessionProvider, stack), login, import (modal),
+                  budgets, (tabs)/ (index = Accueil, transactions, recurring, more; redirects to /login when
+                  signed out); each route just renders its screen
+  src/screens/    screen bodies: login (server URL + credentials), home (KPIs, insights, category bars,
+                  forecast), transactions (search, infinite list by day, category picker + "apply to merchant"),
+                  recurring, more, import-file (document picker → known format → review → commit), budgets
+  src/components/ ui.tsx (Screen, Card, Title, Body, Muted, Money, Dot, Button, Field, ErrorText, Loading),
+                  category-picker.tsx (bottom sheet)
+  src/session.tsx TokenStore (refresh token + server URL in expo-secure-store, access token in memory), one
+                  API instance per server URL, ApiProvider
+  src/strings.ts  French strings; src/theme.ts useTheme(); src/config.ts default API_URL
 ```
 
 ## Conventions
@@ -115,4 +123,9 @@ apps/mobile/
 - ✅ W8: model status card, "why this category" dialog.
 - ✅ W9: forecast card on the dashboard.
 - ✅ W10: settings page. **Web plan complete (W0–W10)**; both headless-browser flows pass.
-- Next: mobile app A1–A6.
+- ✅ A1–A4 + A6 (forecast on the home screen): login with server URL, tabs, home, transactions with
+  recategorization, subscriptions, budgets, import by document picker (known formats; unknown ones are mapped once
+  on the web). Checked by type-check, expo-doctor and an Android bundle export only: this PC cannot run an Android
+  emulator (no hardware virtualization), so it still needs a run on the phone.
+- Not done, need a development build and a real device: Android share-sheet import (expo-share-intent) and
+  background notifications for insights (expo-notifications + expo-background-task) (A3/A5 extras).

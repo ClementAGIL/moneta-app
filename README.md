@@ -7,7 +7,7 @@ and advice to save more.
 The backend is [moneta-api](../moneta-api) (Go + PostgreSQL).
 
 > Status: web app complete (import wizard, transactions, dashboard, subscriptions, budgets and advice, forecast,
-> settings); mobile app in progress. See [docs/PLAN.md](docs/PLAN.md) for the screens and roadmap.
+> settings) and mobile app (home, transactions, subscriptions, budgets, import from a file on the phone). See [docs/PLAN.md](docs/PLAN.md) for the screens and roadmap.
 
 ## What's inside
 

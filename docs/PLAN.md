@@ -143,15 +143,15 @@ with EAS (`eas build -p android --profile preview`) or a local Gradle release bu
 | W9  | ✅ Forecast chart                                                       | M10       |
 | W10 | ✅ Settings: profiles, rules, export, delete account                    | M11       |
 
-| #   | Mobile                                                        | Needs API |
-| --- | ------------------------------------------------------------- | --------- |
-| A0  | ✅ Expo app, shared tokens theme, API health                  | M0        |
-| A1  | Server URL, login/register, secure tokens, tabs               | M2        |
-| A2  | Accueil + Opérations + recategorize                           | M6        |
-| A3  | Import from the share sheet / document picker, review, commit | M4        |
-| A4  | Abonnements, budgets                                          | M7, M8    |
-| A5  | Insights + background notifications                           | M8        |
-| A6  | Forecast, release APK                                         | M10       |
+| #   | Mobile                                                                                  | Needs API |
+| --- | --------------------------------------------------------------------------------------- | --------- |
+| A0  | ✅ Expo app, shared tokens theme, API health                                            | M0        |
+| A1  | ✅ Server URL, login/register, secure tokens, tabs                                      | M2        |
+| A2  | ✅ Accueil + Opérations + recategorize                                                  | M6        |
+| A3  | ✅ Import by document picker, review, commit (share sheet: needs a dev build, not done) | M4        |
+| A4  | ✅ Abonnements, budgets                                                                 | M7, M8    |
+| A5  | ✅ Insights on the home screen (background notifications: dev build, not done)          | M8        |
+| A6  | ✅ Forecast on the home screen (release APK: to build on a machine with EAS/Gradle)     | M10       |
 
 ## Verification
 
