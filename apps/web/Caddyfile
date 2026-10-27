@@ -1,0 +1,12 @@
+# One origin for the app and the API, so the refresh-token cookie stays SameSite=Strict and no CORS is needed.
+:80 {
+	encode gzip
+	handle /api/* {
+		reverse_proxy api:8080
+	}
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}
