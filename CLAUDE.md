@@ -58,6 +58,8 @@ apps/web/
                   Modal.tsx (native dialog), Money.tsx (Money, CategoryBadge), CategorySelect.tsx, ui.module.css
   src/layout/     AppShell (sidebar ≥ 720 px, bottom bar below)
   src/features/   one folder per screen: auth, dashboard, transactions, import, accounts, categories
+                  import/: ImportPage (step state) → UploadStep → MappingStep (roles.ts: column role ↔ Mapping)
+                  → ReviewStep (near-duplicates skipped unless kept) → DoneStep; ImportHistory (undo)
   Dockerfile      optional: built from the repo root, Caddy serves dist/ and proxies /api (used by moneta-api's
                   compose file and CI; the home server instead runs moneta.exe with MONETA_WEB_DIR=apps/web/dist)
 .github/workflows/ci.yml  npm ci, check, web build, Expo Android export, web Docker image build
@@ -91,4 +93,5 @@ apps/mobile/
 - ✅ W1: shared API client + hooks (types generated from the OpenAPI file), session, routing, UI kit, app shell,
   login/register.
 - ✅ W2: accounts page (banks, accounts with anchor balance), categories page (tree, edit) with rules card.
-- Next: W3 (import wizard).
+- ✅ W3: import wizard (known formats skip the mapping step), history with undo.
+- Next: W4 (transactions).

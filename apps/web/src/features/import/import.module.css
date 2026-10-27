@@ -1,0 +1,130 @@
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-lg);
+  color: var(--color-textMuted);
+  font-size: 14px;
+}
+.current {
+  color: var(--color-brand);
+  font-weight: 700;
+}
+.drop {
+  margin-top: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xxl) var(--space-lg);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-textMuted);
+  text-align: center;
+  cursor: pointer;
+}
+.drop strong {
+  color: var(--color-brand);
+}
+.dragging {
+  border-color: var(--color-brand);
+  background: color-mix(in srgb, var(--color-brand) 6%, transparent);
+}
+.muted {
+  color: var(--color-textMuted);
+}
+.options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+.gridWrap {
+  overflow: auto;
+  max-height: 420px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+.grid {
+  font-size: 13px;
+}
+.grid th {
+  position: sticky;
+  top: 0;
+  background: var(--color-surface);
+  padding: var(--space-xs);
+  min-width: 120px;
+}
+.grid td {
+  padding: var(--space-xs) var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  white-space: nowrap;
+  max-width: 320px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.headerRow td {
+  font-weight: 700;
+  background: color-mix(in srgb, var(--color-brand) 8%, transparent);
+}
+.skipped td {
+  color: var(--color-textMuted);
+  text-decoration: line-through;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+.summary {
+  font-size: 17px;
+  font-weight: 600;
+}
+.reviews {
+  list-style: none;
+  padding: 0;
+}
+.reviews li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-border);
+}
+.reviews li div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.invalid {
+  margin-top: var(--space-lg);
+  color: var(--color-textMuted);
+}
+.history {
+  margin-top: var(--space-xl);
+}
+.history ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.history li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  border-top: 1px solid var(--color-border);
+}
+.history li span {
+  display: flex;
+  flex-direction: column;
+}
+.history small {
+  color: var(--color-textMuted);
+}
