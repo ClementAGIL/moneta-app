@@ -4,3 +4,4 @@ dist/
 package-lock.json
 apps/mobile/android/
 apps/mobile/ios/
+packages/shared/src/api/schema.ts

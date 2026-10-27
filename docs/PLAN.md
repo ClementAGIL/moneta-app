@@ -129,19 +129,19 @@ with EAS (`eas build -p android --profile preview`) or a local Gradle release bu
 
 ## Milestones (one or more commits each; CLAUDE.md + README updated each time)
 
-| #   | Web                                                                  | Needs API |
-| --- | -------------------------------------------------------------------- | --------- |
-| W0  | ✅ Monorepo, Vite app, shared tokens → CSS variables, API health     | M0        |
-| W1  | UI kit, routing, app shell, generated API types + client, auth pages | M2        |
-| W2  | Onboarding (banks, accounts), categories list                        | M3        |
-| W3  | Import wizard (upload, mapping grid, review, commit, history/undo)   | M4        |
-| W4  | Transactions table, filters, search, recategorize + rule dialog      | M5        |
-| W5  | Dashboard → **MVP complete**                                         | M6        |
-| W6  | Subscriptions / recurring, transfer pairing UI                       | M7        |
-| W7  | Budgets, insights feed                                               | M8        |
-| W8  | Model status, "why this category"                                    | M9        |
-| W9  | Forecast chart                                                       | M10       |
-| W10 | Settings: profiles, rules, export, delete account                    | M11       |
+| #   | Web                                                                     | Needs API |
+| --- | ----------------------------------------------------------------------- | --------- |
+| W0  | ✅ Monorepo, Vite app, shared tokens → CSS variables, API health        | M0        |
+| W1  | ✅ UI kit, routing, app shell, generated API types + client, auth pages | M2        |
+| W2  | Onboarding (banks, accounts), categories list                           | M3        |
+| W3  | Import wizard (upload, mapping grid, review, commit, history/undo)      | M4        |
+| W4  | Transactions table, filters, search, recategorize + rule dialog         | M5        |
+| W5  | Dashboard → **MVP complete**                                            | M6        |
+| W6  | Subscriptions / recurring, transfer pairing UI                          | M7        |
+| W7  | Budgets, insights feed                                                  | M8        |
+| W8  | Model status, "why this category"                                       | M9        |
+| W9  | Forecast chart                                                          | M10       |
+| W10 | Settings: profiles, rules, export, delete account                       | M11       |
 
 | #   | Mobile                                                        | Needs API |
 | --- | ------------------------------------------------------------- | --------- |

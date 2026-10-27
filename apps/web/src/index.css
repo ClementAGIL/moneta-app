@@ -1,8 +1,14 @@
 /* Base styles. Colors and sizes come from the shared tokens (see theme.ts). */
 :root {
-  font-family: system-ui, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  font-size: 15px;
   color: var(--color-text);
   background: var(--color-background);
+  color-scheme: light dark;
 }
 
 body {
@@ -10,26 +16,11 @@ body {
   background: var(--color-background);
 }
 
-.home {
-  max-width: 40rem;
-  margin: 15vh auto 0;
-  padding: 0 var(--space-lg);
-}
-
-.home h1 {
+a {
   color: var(--color-brand);
-  font-size: 2.5rem;
-  margin: 0;
 }
 
-.home p {
-  color: var(--color-textMuted);
-}
-
-.status-up {
-  color: var(--color-income);
-}
-
-.status-down {
-  color: var(--color-expense);
+table {
+  border-collapse: collapse;
+  width: 100%;
 }

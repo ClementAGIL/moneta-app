@@ -1,4 +1,12 @@
-// Public surface of @moneta/shared: everything web and mobile both use. Platform-free (no DOM, no React Native).
+// Public surface of @moneta/shared: everything web and mobile both use. No DOM or React Native imports here.
 export * from './tokens';
 export * from './format';
-export * from './api';
+export * from './api/client';
+export * from './api/context';
+export * from './api/session';
+export type * from './api/types';
+export * from './queries/keys';
+export * from './queries/resources';
+export * from './queries/imports';
+export * from './queries/transactions';
+export * from './queries/stats';

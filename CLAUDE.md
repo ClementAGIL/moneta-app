@@ -38,11 +38,25 @@ No unit tests by default (user's rule).
 ```
 packages/shared/src/
   tokens.ts       design tokens (palettes light/dark, spacing, radius, font sizes)
-  format.ts       formatMoney(cents), formatDate(iso), fr-FR
-  api.ts          checkHealth (becomes api/ with the generated client at W1)
+  format.ts       fr-FR formatting: money (cents), dates, months (formatMonth, addMonths, currentMonth), percent
+  api/schema.ts   GENERATED from ../moneta-api/docs/openapi.yaml (npm run api:types -w @moneta/shared)
+  api/types.ts    friendly aliases (Account, Transaction, ImportPreview…)
+  api/client.ts   createApi(baseUrl, TokenStore, onSessionEnd): openapi-fetch client over a fetch that adds the
+                  bearer token and refreshes once on 401; ApiError, unwrap, checkHealth
+  api/session.ts  signIn / signOut (web: refresh cookie; mobile: refresh token in the TokenStore)
+  api/context.tsx ApiProvider / useApi
+  queries/        TanStack Query hooks per resource; keys.ts (+ transactionDerived invalidated after imports and
+                  corrections)
 apps/web/
   src/theme.ts    tokens → CSS variables (--color-*, --space-*, --radius-*), injected before render
-  src/App.tsx     placeholder home (API status)
+  src/api.ts      web TokenStore (access token in memory) + api instance + onSessionEnd
+  src/auth/       SessionProvider (refresh on load, signIn/signOut)
+  src/App.tsx     loading / AuthPage / router; src/routes.tsx route table
+  src/strings.ts  French UI strings, grouped by screen
+  src/ui/         kit.tsx (Button, Field, Input, Select, Card, PageHeader, EmptyState, Spinner, ErrorText),
+                  Modal.tsx (native dialog), Money.tsx (Money, CategoryBadge), ui.module.css
+  src/layout/     AppShell (sidebar ≥ 720 px, bottom bar below)
+  src/features/   one folder per screen: auth, dashboard, transactions, import, accounts, categories
   Dockerfile      optional: built from the repo root, Caddy serves dist/ and proxies /api (used by moneta-api's
                   compose file and CI; the home server instead runs moneta.exe with MONETA_WEB_DIR=apps/web/dist)
 .github/workflows/ci.yml  npm ci, check, web build, Expo Android export, web Docker image build
@@ -73,4 +87,6 @@ apps/mobile/
 - ✅ W0 / A0 scaffold: monorepo, shared tokens/format/health, web placeholder themed via CSS variables, Expo app
   themed via `useTheme()`, optional web Dockerfile + Caddyfile, CI. `npm run check`, web build, expo-doctor and an
   Android export bundle pass; the web build is served by `moneta.exe` (checked).
-- Next: W1 (UI kit, routing, generated API client, auth pages) once the API has M2.
+- ✅ W1: shared API client + hooks (types generated from the OpenAPI file), session, routing, UI kit, app shell,
+  login/register.
+- Next: W2 (accounts, categories).

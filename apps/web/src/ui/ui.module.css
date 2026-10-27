@@ -1,0 +1,178 @@
+/* Shared styles of the small UI kit (buttons, fields, cards, modal, feedback). Tokens come from theme.ts. */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-height: 40px;
+  padding: 0 var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+.button:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+.button:not(:disabled):hover {
+  filter: brightness(1.07);
+}
+.primary {
+  background: var(--color-brand);
+  color: var(--color-onBrand);
+}
+.secondary {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+.danger {
+  background: transparent;
+  color: var(--color-expense);
+  border-color: var(--color-expense);
+}
+.ghost {
+  background: transparent;
+  color: var(--color-textMuted);
+  padding: 0 var(--space-sm);
+}
+.small {
+  min-height: 32px;
+  padding: 0 var(--space-md);
+  font-size: 13px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: 14px;
+}
+.field > span {
+  color: var(--color-textMuted);
+  font-weight: 500;
+}
+.input {
+  min-height: 40px;
+  padding: 0 var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+.input:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 1px;
+}
+.fieldError {
+  color: var(--color-expense);
+  font-size: 13px;
+}
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+}
+.cardTitle {
+  margin: 0 0 var(--space-md);
+  font-size: 15px;
+  color: var(--color-textMuted);
+  font-weight: 600;
+}
+
+.pageHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+.pageHeader h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.empty {
+  text-align: center;
+  padding: var(--space-xxl) var(--space-lg);
+  color: var(--color-textMuted);
+}
+.empty h2 {
+  color: var(--color-text);
+  font-size: 18px;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-brand);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: var(--space-xl) auto;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.error {
+  color: var(--color-expense);
+  background: color-mix(in srgb, var(--color-expense) 10%, transparent);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+}
+
+.modal {
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  width: min(480px, calc(100vw - 32px));
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+.modal::backdrop {
+  background: rgb(0 0 0 / 0.4);
+}
+.modal h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}
+
+.income {
+  color: var(--color-income);
+}
+.expense {
+  color: var(--color-text);
+}
+.amount {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
